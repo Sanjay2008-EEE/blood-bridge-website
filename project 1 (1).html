@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Bridge</title>
+
+    <!-- Mobile Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #f5f6fa;
+        }
+
+        header {
+            background-color: rgba(0,0,0,0.85);
+            color: white;
+            padding: 15px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 40px;
+            font-style: italic;
+            color: #30d6af;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #d63031;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #ff4d4d;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 10px;
+            background: #222;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Emoji image alignment */
+        button img, h2 img {
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        /* Tablet */
+        @media (min-width: 600px) {
+            h1 {
+                font-size: 50px;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 60px;
+            }
+
+            .container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>BLOOD BRIDGE</h1>
+
+    <h2>
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14/assets/svg/1fa78.svg" width="22">
+        Blood Help System
+    </h2>
+
+    <p>Save Lives by Connecting Donors & Hospitals</p>
+</header>
+
+<!-- Home -->
+<div id="home" class="section active">
+    <div class="container">
+        <h2>A Drop of Hope</h2>
+        <p>Choose your role to proceed</p>
+
+        <button onclick="showSection('hospital')">
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14/assets/svg/1f3e5.svg" width="20">
+            Hospital Register
+        </button>
+
+        <button onclick="showSection('donor')">
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14/assets/svg/2764.svg" width="20">
+            Donor Register
+        </button>
+    </div>
+</div>
+
+<!-- Hospital -->
+<div id="hospital" class="section">
+    <div class="container">
+        <h2>
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14/assets/svg/1f3e5.svg" width="20">
+            Hospital Registration
+        </h2>
+
+        <form onsubmit="registerHospital(event)">
+            <input type="text" placeholder="Hospital Name" required>
+            <input type="text" placeholder="Location" required>
+            <input type="tel" placeholder="Phone Number" required>
+
+            <select required>
+                <option value="">Select Blood Group</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <button onclick="showSection('home')">⬅ Back</button>
+    </div>
+</div>
+
+<!-- Donor -->
+<div id="donor" class="section">
+    <div class="container">
+        <h2>
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14/assets/svg/2764.svg" width="20">
+            Donor Registration
+        </h2>
+
+        <form onsubmit="registerDonor(event)">
+            <input type="text" placeholder="Full Name" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <input type="text" placeholder="Location" required>
+
+            <select required>
+                <option value="">Select Blood Group</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <button onclick="showSection('home')">⬅ Back</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Blood Help Project</p>
+</footer>
+
+<script>
+function showSection(sectionId) {
+    document.getElementById('home').classList.remove('active');
+    document.getElementById('hospital').classList.remove('active');
+    document.getElementById('donor').classList.remove('active');
+
+    document.getElementById(sectionId).classList.add('active');
+}
+
+function registerHospital(event) {
+    event.preventDefault();
+    alert("✅ Hospital Registered Successfully!");
+}
+
+function registerDonor(event) {
+    event.preventDefault();
+    alert("❤️ Donor Registered Successfully!");
+}
+</script>
+
+</body>
+</html>
